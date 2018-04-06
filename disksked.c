@@ -22,20 +22,23 @@ int main(int argc, char *argv[]){
     int distance[9];
     int Total = 0;
 
-    for(int i = 0; i < 8; i++){
+
+    printf("Start is at: %i\n",Start);
+    for(int i = 0; i < 8; i++) {
         tracks[i] = atoi(argv[i + 2]);
+        printf("Loaded Track: %i\n",tracks[i]);
     }
 
     distance[0]  = abs(Start - tracks[0]);
-    printf("Distance right now: %i\n", distance[0]);
+    printf("Initial starting distance: %i\n", distance[0]);
 
-    for(int i = 1; i < 10; i++){
-        printf("Tracks: %i and %i\n",tracks[i], tracks[i+1]);
-        distance[i] = abs(tracks[i] - tracks[i+1]);
+    for(int i = 1; i < 9; i++) {
+        printf("Comparing Tracks: %i and %i\n",tracks[i], tracks[i+1]);
+        distance[i] = abs(tracks[i-1] - tracks[i]);
         printf("Distance right now: %i\n", distance[i]);
     }
 
-    for(int i = 0; i < 9; i++){
+    for(int i = 0; i < 8; i++) {
         Total += distance[i];
         printf("Total right now: %i\n", Total);
     }
