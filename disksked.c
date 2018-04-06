@@ -17,34 +17,37 @@ int main(int argc, char *argv[]){
         return 1;
     }
 
-    //int start = atoi(argv[1])
-    //int tracks[8]
-    //for(int i = 0; i < 8; i++)
-    //tracks[i]=atoi(argv[i+2])
-
     int Start = atoi(argv[1]);
-    int T1 = atoi(argv[2]);
-    int T2 = atoi(argv[3]);
-    int T3 = atoi(argv[4]);
-    int T4 = atoi(argv[5]);
-    int T5 = atoi(argv[6]);
-    int T6 = atoi(argv[7]);
-    int T7 = atoi(argv[8]);
-    int T8 = atoi(argv[9]);
+    int tracks[8];
+    int distance[9];
+    int Total = 0;
 
-    //FCFS
-    int D1 = abs(Start - T1);
-    int D2 = abs(T1 - T2);
-    int D3 = abs(T2 - T3);
-    int D4 = abs(T3 - T4);
-    int D5 = abs(T4 - T5);
-    int D6 = abs(T5 - T6);
-    int D7 = abs(T6 - T7);
-    int D8 = abs(T7 - T8);
-    int Total = D1 + D2 + D3 + D4 + D5 + D6 + D7 + D8;
+    for(int i = 0; i < 8; i++){
+        tracks[i] = atoi(argv[i + 2]);
+    }
 
-    printf("FCFS: Start:%i %i:%i %i:%i %i:%i %i:%i %i:%i %i:%i %i:%i %i:%i Total:%i\n",
-           Start, T1, D1, T2, D2, T3, D3, T4, D4, T5, D5, T6, D6, T7, D7, T8, D8, Total);
+    distance[0]  = abs(Start - tracks[0]);
+    printf("Distance right now: %i\n", distance[0]);
+
+    for(int i = 1; i < 10; i++){
+        printf("Tracks: %i and %i\n",tracks[i], tracks[i+1]);
+        distance[i] = abs(tracks[i] - tracks[i+1]);
+        printf("Distance right now: %i\n", distance[i]);
+    }
+
+    for(int i = 0; i < 9; i++){
+        Total += distance[i];
+        printf("Total right now: %i\n", Total);
+    }
+
+    printf("FCFS: Start:%i", Start);
+    for(int i = 0; i < 8; i++){
+        printf(" %i:%i", tracks[i], distance[i]);
+    }
+    printf(" Total:%i\n", Total);
+
+    /*printf("FCFS: Start:%i %i:%i %i:%i %i:%i %i:%i %i:%i %i:%i %i:%i %i:%i Total:%i\n",
+           Start, T1, D1, T2, D2, T3, D3, T4, D4, T5, D5, T6, D6, T7, D7, T8, D8, Total);*/
 
     return 0;
 }
