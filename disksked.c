@@ -71,18 +71,11 @@ int main(int argc, char *argv[]){
         }
     }
 
-    /*printf("\nscan_tracks: ");
-    for (int i = 0; i < 8; i++) {
-        printf("%i:%i ", i, scan_tracks[i]);
-    }
-    printf("\n");*/
-
     for (int i = 1; i < 8; i++) {
         if((scan_tracks[i-1] < Start) && (Start <= scan_tracks[i])){
             scan_index = i;
         }
     }
-    //printf("scan_index is: %i\n",scan_index);
 
     if (scan_index != -1) {
         //Collect the Start and first index values
@@ -131,12 +124,6 @@ int main(int argc, char *argv[]){
         }
     }
 
-    /*printf("\ncscan_tracks: ");
-    for (int i = 0; i < 8; i++) {
-        printf("%i:%i ", i, cscan_tracks[i]);
-    }
-    printf("\n");*/
-
     if(Start > cscan_tracks[7]) {
         cscan_index = -1;
     } else if(Start < cscan_tracks[7]) {
@@ -148,10 +135,9 @@ int main(int argc, char *argv[]){
             cscan_index = i;
         }
     }
-    //printf("cscan_index is: %i\n",cscan_index);
 
     if (cscan_index == -1) {
-        //Process from the end of the array to the beginning
+        //Process from the end of the array
         printf(" %i:%i ", cscan_tracks[7], abs(Start - cscan_tracks[7]));
         cscan_total += abs(Start - cscan_tracks[7]);
         for (int i = 6; i >= 0; i--) {
@@ -192,7 +178,6 @@ int main(int argc, char *argv[]){
         }
         printf("Total:%i\n", cscan_total);
     }
-
-
+    
     return 0;
 }
